@@ -1,0 +1,10 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=33e2b4c42b0e66c45acd08f8efbb17f4&amp;type=3#MainMenuStyle"/>
+    <ui:VisualElement name="MainMenuRoot" style="flex-grow: 1; width: auto; height: auto;">
+        <ui:Label text="ROYAL RESOLVE" name="Title" class="Title" style="-unity-font-definition: url(&quot;project://database/Assets/TextMesh%20Pro/Examples%20&amp;%20Extras/Fonts/Electronic%20Highway%20Sign.TTF?fileID=12800000&amp;guid=8a2b9e2a607dd2143b58c44bc32410b4&amp;type=3#Electronic Highway Sign&quot;); -unity-font-style: bold-and-italic; font-size: 125px; display: flex; width: 1120px; height: 142px;"/>
+        <ui:Button text="Start Game" parse-escape-sequences="false" selectable="false" focusable="false" name="StartGameButton" class="Button" style="width: 500px; height: 100px; font-size: 35px;"/>
+        <ui:Button text="Settings " parse-escape-sequences="false" selectable="false" focusable="false" name="SettingsButton" class="Button" style="width: 500px; height: 100px; font-size: 35px; top: 75px;"/>
+        <ui:Button text="Credits" parse-escape-sequences="false" selectable="false" focusable="false" name="CreditsButton" class="Button" style="width: 500px; height: 100px; font-size: 35px; top: 100px;"/>
+        <ui:Button text="Quit" parse-escape-sequences="false" selectable="false" focusable="false" name="QuitGameButton" class="Button" style="font-size: 35px; width: 500px; height: 100px; top: 125px;"/>
+    </ui:VisualElement>
+</ui:UXML>

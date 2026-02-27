@@ -1,0 +1,19 @@
+.Title {
+    top: 25px;
+    left: 25px;
+    width: auto;
+    height: auto;
+}
+
+.Button {
+    top: 50px;
+    align-items: flex-start;
+    width: 250px;
+    height: 50px;
+    left: 25px;
+    -unity-font-definition: url("project://database/Assets/TextMesh%20Pro/Examples%20&%20Extras/Fonts/Electronic%20Highway%20Sign.TTF?fileID=12800000&guid=8a2b9e2a607dd2143b58c44bc32410b4&type=3#Electronic Highway Sign");
+    font-size: 20px;
+    -unity-font-style: italic;
+    opacity: 0.75;
+    position: relative;
+}

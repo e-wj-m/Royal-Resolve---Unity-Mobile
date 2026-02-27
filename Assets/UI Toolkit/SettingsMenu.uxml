@@ -1,0 +1,7 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=33e2b4c42b0e66c45acd08f8efbb17f4&amp;type=3#MainMenuStyle"/>
+    <ui:VisualElement name="SettingsMenuRoot" style="flex-grow: 1;">
+        <ui:Label text="Settings" name="Title" class="Title"/>
+        <ui:Button text="Main Menu" style="top: 50px;"/>
+    </ui:VisualElement>
+</ui:UXML>
