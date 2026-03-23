@@ -50,6 +50,10 @@ public class AudioSettingsManager : MonoBehaviour
 
         SeedIfMissing(KeyEnemyEnabled, enemySfxEnabledDefault ? 1 : 0);
         SeedIfMissing(KeyEnemyVolume, enemySfxVolumeDefault);
+
+        Debug.Log($"[Audio] Music: enabled={GetEnabled(AudioChannel.Music)}, vol={GetVolume(AudioChannel.Music)}");
+        Debug.Log($"[Audio] PlayerSfx: enabled={GetEnabled(AudioChannel.PlayerSfx)}, vol={GetVolume(AudioChannel.PlayerSfx)}");
+        Debug.Log($"[Audio] EnemySfx: enabled={GetEnabled(AudioChannel.EnemySfx)}, vol={GetVolume(AudioChannel.EnemySfx)}");
     }
 
     private void SeedIfMissing(string key, int value)

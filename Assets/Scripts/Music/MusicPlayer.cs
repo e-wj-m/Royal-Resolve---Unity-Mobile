@@ -28,6 +28,13 @@ public class MusicPlayer : MonoBehaviour
 
         ApplyVolumeFromSettings();
         audioSource.Play();
+
+        Debug.Log($"[MusicPlayer] Playing: {audioSource.isPlaying}, " +
+          $"Volume: {audioSource.volume}, " +
+          $"Clip: {(audioSource.clip != null ? audioSource.clip.name : "NULL")}, " +
+          $"Mute: {audioSource.mute}, " +
+          $"Listener Vol: {AudioListener.volume}, " +
+          $"Listener Pause: {AudioListener.pause}");
     }
 
     private void OnEnable()

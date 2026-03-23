@@ -21,8 +21,10 @@ public class EnemyHealth : MonoBehaviour, IHittable
     private int hitsTaken;
     private bool isDead;
 
+    public bool IsDead => isDead;
+
     private static readonly int IsHit = Animator.StringToHash("isHit");
-    private static readonly int IsDead = Animator.StringToHash("isDead");
+    private static readonly int DeadHash = Animator.StringToHash("isDead");
 
     private void Awake()
     {
@@ -74,7 +76,7 @@ public class EnemyHealth : MonoBehaviour, IHittable
         if (anim != null)
         {
             anim.SetBool(IsHit, false);
-            anim.SetBool(IsDead, true);
+            anim.SetBool(DeadHash, true);
         }
 
         // SFX: death 
