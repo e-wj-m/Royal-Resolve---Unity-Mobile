@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-public class TreasureChest : MonoBehaviour
+public class CollectableCoin : MonoBehaviour
 {
     [Header("Audio")]
     [SerializeField] private AudioClip pickupSfx;
@@ -19,7 +19,7 @@ public class TreasureChest : MonoBehaviour
         if (pickupSfx != null)
             AudioSource.PlayClipAtPoint(pickupSfx, transform.position, pickupVolume);
 
-        TreasureChestInventory.Instance.AddChest();
+        CollectableCoinInventory.Instance.AddCoin();
         Destroy(gameObject);
     }
 }

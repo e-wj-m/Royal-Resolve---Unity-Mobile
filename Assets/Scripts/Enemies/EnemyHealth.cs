@@ -38,17 +38,14 @@ public class EnemyHealth : MonoBehaviour, IHittable
     public void ReceiveHit()
     {
         if (isDead) return;
-
         hitsTaken++;
 
         // SFX: hit 
         float master = (AudioSettingsManager.Instance != null)
             ? AudioSettingsManager.Instance.GetEffectiveVolume(AudioChannel.EnemySfx)
             : 1f;
-
         PlayOneShot(hitSfx, master * hitVolume);
 
-        // brief hit reaction
         if (anim != null)
         {
             anim.SetBool(IsHit, true);
@@ -56,7 +53,9 @@ public class EnemyHealth : MonoBehaviour, IHittable
             StartCoroutine(ClearHitBool());
         }
 
-        if (hitsTaken >= hitsToDie)
+        // Bonus hits from Player upgrades count as extra hits dealt
+        int bonusHits = PlayerCombatStats.Instance != null ? PlayerCombatStats.Instance.BonusHits : 0;
+        if (hitsTaken + bonusHits >= hitsToDie)
             Die();
     }
 

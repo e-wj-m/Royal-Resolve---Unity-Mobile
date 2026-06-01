@@ -37,16 +37,12 @@ public class GestureDetector : MonoBehaviour
             enabled = false;
             return;
         }
+
+        InputManager.Instance.OnTouchBegin += HandleTouchBegin;
+        InputManager.Instance.OnTouchEnd += HandleTouchEnd;
+
     }
 
-    private void OnEnable()
-    {
-        if (InputManager.Instance != null)
-        {
-            InputManager.Instance.OnTouchBegin += HandleTouchBegin;
-            InputManager.Instance.OnTouchEnd += HandleTouchEnd;
-        }
-    }
     private void OnDisable()
     {
         if (InputManager.Instance != null)

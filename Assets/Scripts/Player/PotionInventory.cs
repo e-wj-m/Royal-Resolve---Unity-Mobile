@@ -76,4 +76,11 @@ public class PotionInventory : MonoBehaviour
         if (potionCountText != null)
             potionCountText.text = potionCount.ToString();
     }
+
+    public void UpgradeHealPercent(float newHealPercent)
+    {
+        healPercent = newHealPercent;
+        Debug.Log($"[PotionInventory] Heal upgraded to {healPercent}%");
+    }
+
 }

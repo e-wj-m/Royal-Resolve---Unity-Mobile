@@ -88,7 +88,8 @@ public class EnemyCombat : MonoBehaviour
         float dist = Vector3.Distance(transform.position, playerTransform.position);
         if (dist <= attackRange)
         {
-            playerHealth.TakeDamage(attackDamage);
+            float reduction = PlayerCombatStats.Instance != null ? PlayerCombatStats.Instance.DamageReduction : 1f;
+            playerHealth.TakeDamage(attackDamage * reduction);
         }
 
         yield return new WaitForSeconds(0.25f);
