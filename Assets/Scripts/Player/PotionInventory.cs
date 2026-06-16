@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using FMODUnity;
 
 public class PotionInventory : MonoBehaviour
 {
@@ -15,9 +16,12 @@ public class PotionInventory : MonoBehaviour
     [SerializeField] private Button potionButton;
     [SerializeField] private TextMeshProUGUI potionCountText;
 
-    [Header("Audio")]
-    [SerializeField] private AudioClip useSfx;
-    [SerializeField, Range(0f, 1f)] private float useVolume = 1f;
+    //[Header("Audio")]
+    //[SerializeField] private AudioClip useSfx;
+    //[SerializeField, Range(0f, 1f)] private float useVolume = 1f;
+
+    [Header("FMod Events")]
+    [SerializeField] private EventReference potionUseEvent;
 
     private PlayerHealth playerHealth;
     private int potionCount;
@@ -59,8 +63,10 @@ public class PotionInventory : MonoBehaviour
         if (potionCount <= 0) return;
         if (playerHealth == null) return;
         if (playerHealth.currentHealth >= playerHealth.maxHealth) return;
-        if (useSfx != null)
-            AudioSource.PlayClipAtPoint(useSfx, Camera.main.transform.position, useVolume);
+        //if (useSfx != null)
+        //    AudioSource.PlayClipAtPoint(useSfx, Camera.main.transform.position, useVolume);
+
+        RuntimeManager.PlayOneShot(potionUseEvent, transform.position);
 
         float healAmount = playerHealth.maxHealth * (healPercent / 100f);
         playerHealth.Heal(healAmount);

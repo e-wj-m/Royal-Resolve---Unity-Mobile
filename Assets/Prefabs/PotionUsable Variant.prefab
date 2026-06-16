@@ -223,8 +223,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0a0a9fb7522e7f47bb18be2825f040f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HealthPotion
-  pickupSfx: {fileID: 8300000, guid: c71d99b0740e6824880ba8aa2cfb915f, type: 3}
-  pickupVolume: 0.5
+  potionPickupEvent:
+    Guid:
+      Data1: -1433850256
+      Data2: 1287221916
+      Data3: -636795776
+      Data4: 424844535
+    Path: event:/Potion Pickup Activation
 --- !u!4 &8700306814741777050 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7237194289545037968, guid: 9eda7a2358fba7e42b4a0142f42f5be4, type: 3}

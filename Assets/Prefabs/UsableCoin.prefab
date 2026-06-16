@@ -248,8 +248,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5936d3846e96da64ca062dc54babf4fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectableCoin
-  pickupSfx: {fileID: 8300000, guid: c4d0798aa53ff264dbef052f28febb29, type: 3}
-  pickupVolume: 0.2
+  coinPickupEvent:
+    Guid:
+      Data1: -25074329
+      Data2: 1337971441
+      Data3: 560731326
+      Data4: -1310327820
+    Path: event:/Coin Pickup Activation
 --- !u!114 &8552982028131781919
 MonoBehaviour:
   m_ObjectHideFlags: 0

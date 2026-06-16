@@ -1,11 +1,15 @@
 using UnityEngine;
+using FMODUnity;
 
 [RequireComponent(typeof(Collider))]
 public class HealthPotion : MonoBehaviour
 {
-    [Header("Audio")]
-    [SerializeField] private AudioClip pickupSfx;
-    [SerializeField, Range(0f, 1f)] private float pickupVolume = 1f;
+    //[Header("Audio")]
+    //[SerializeField] private AudioClip pickupSfx;
+    //[SerializeField, Range(0f, 1f)] private float pickupVolume = 1f;
+
+    [Header("FMod Events")]
+    [SerializeField] private EventReference potionPickupEvent;
 
     private bool collected;
 
@@ -16,10 +20,12 @@ public class HealthPotion : MonoBehaviour
 
         collected = true;
 
-        if (pickupSfx != null)
-            AudioSource.PlayClipAtPoint(pickupSfx, transform.position, pickupVolume);
+        //if (pickupSfx != null)
+        //AudioSource.PlayClipAtPoint(pickupSfx, transform.position, pickupVolume);
 
         PotionInventory.Instance.AddPotion();
         Destroy(gameObject);
+
+        RuntimeManager.PlayOneShot(potionPickupEvent, transform.position);
     }
 }

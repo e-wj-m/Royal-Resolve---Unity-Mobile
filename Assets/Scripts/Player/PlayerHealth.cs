@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using FMODUnity;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -23,6 +24,9 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private Button restartButton;
     [SerializeField] private Button quitButton;
     [SerializeField] private float deathOverlayDelay = 1.5f;
+
+    [Header("FMod Events")]
+    [SerializeField] private EventReference playerDamageEvent;
 
     [Header("Player Death Conditions")]
     [Tooltip("Player Will 'Die' On The Following Conditions:")]
@@ -66,6 +70,8 @@ public class PlayerHealth : MonoBehaviour
 
         currentHealth = Mathf.Clamp(currentHealth - amount, 0f, maxHealth);
         targetFill = currentHealth / maxHealth;
+
+        RuntimeManager.PlayOneShot(playerDamageEvent, transform.position);
 
         if (currentHealth <= 0f)
         {

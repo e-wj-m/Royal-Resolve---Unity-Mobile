@@ -6,7 +6,6 @@ public class MusicPlayer : MonoBehaviour
     public static MusicPlayer Instance { get; private set; }
 
     [SerializeField] private AudioClip musicTrack;
-
     private AudioSource audioSource;
 
     private void Awake()
@@ -37,16 +36,36 @@ public class MusicPlayer : MonoBehaviour
           $"Listener Pause: {AudioListener.pause}");
     }
 
+    private bool subscribed;
+
     private void OnEnable()
     {
-        if (AudioSettingsManager.Instance != null)
-            AudioSettingsManager.Instance.OnAudioSettingsChanged += ApplyVolumeFromSettings;
+        TrySubscribe();
+    }
+
+    private void Start()
+    {
+        TrySubscribe();   // second chance, after all Awakes have run
+    }
+
+    private void TrySubscribe()
+    {
+        if (subscribed) return;
+        if (AudioSettingsManager.Instance == null) return;
+
+        AudioSettingsManager.Instance.OnAudioSettingsChanged += ApplyVolumeFromSettings;
+        ApplyVolumeFromSettings();
+        subscribed = true;
+        Debug.Log($"[MusicPlayer] Subscribed, settingsID={AudioSettingsManager.Instance.GetInstanceID()}");
     }
 
     private void OnDisable()
     {
-        if (AudioSettingsManager.Instance != null)
+        if (subscribed && AudioSettingsManager.Instance != null)
+        {
             AudioSettingsManager.Instance.OnAudioSettingsChanged -= ApplyVolumeFromSettings;
+            subscribed = false;
+        }
     }
 
     private void ApplyVolumeFromSettings()
@@ -54,6 +73,8 @@ public class MusicPlayer : MonoBehaviour
         float v = 0.6f;
         if (AudioSettingsManager.Instance != null)
             v = AudioSettingsManager.Instance.GetEffectiveVolume(AudioChannel.Music);
+
+        Debug.Log($"[MusicPlayer] ApplyVolumeFromSettings -> {v}");
 
         audioSource.volume = v;
 

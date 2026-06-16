@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using FMODUnity;
 
 [RequireComponent(typeof(CanvasGroup))]
 public class WorldSpaceButton : MonoBehaviour
@@ -21,6 +22,9 @@ public class WorldSpaceButton : MonoBehaviour
 
     [Header("Shop Settings")]
     public int coinCost = 1; // Cost in coins to interact with this button (if it's a shop button)
+
+    [Header("FMod Events")]
+    [SerializeField] private EventReference buttonActivationEvent;
 
     private CanvasGroup canvasGroup;
     private bool inRange = false;
@@ -89,6 +93,8 @@ public class WorldSpaceButton : MonoBehaviour
 
             // Fire the upgrade event
             onPressed?.Invoke();
+
+            RuntimeManager.PlayOneShot(buttonActivationEvent, transform.position);
 
             // Fade out and disable
             StartCoroutine(FadeOutAndDestroy());

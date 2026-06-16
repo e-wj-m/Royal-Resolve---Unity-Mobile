@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 76d5c47633a35c944bacd25c41d09376, type: 3}
       propertyPath: m_Name
-      value: Ch10_nonPBR(1)
+      value: ZombieEnemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -176,11 +176,20 @@ MonoBehaviour:
   hitsToDie: 3
   anim: {fileID: 5138455178330338052}
   hitFlashTime: 0.12
-  audioSource: {fileID: 0}
-  hitSfx: {fileID: 0}
-  deathSfx: {fileID: 0}
-  hitVolume: 1
-  deathVolume: 1
+  enemyHitEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  enemyDeathEvent:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
 --- !u!114 &4446787189318047189
 MonoBehaviour:
   m_ObjectHideFlags: 0

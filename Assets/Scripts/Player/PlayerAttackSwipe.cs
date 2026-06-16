@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using FMODUnity;
 
 [RequireComponent(typeof(SphereCollider))]
 public class PlayerAttackSwipe : MonoBehaviour
@@ -11,10 +12,13 @@ public class PlayerAttackSwipe : MonoBehaviour
     [Header("Attack Rules")]
     [SerializeField] private float attackCooldown = 0.25f;
 
-    [Header("Audio")]
-    [SerializeField] private AudioSource audioSource; // optional, will auto-find
-    [SerializeField] private AudioClip swipeSfx;
-    [SerializeField, Range(0f, 1f)] private float swipeVolume = 1f;
+    [Header("FMod Events")]
+    [SerializeField] private EventReference playerAttackEvent;
+
+    //[Header("Audio")]
+    //[SerializeField] private AudioSource audioSource; // optional, will auto-find
+    //[SerializeField] private AudioClip swipeSfx;
+    //[SerializeField, Range(0f, 1f)] private float swipeVolume = 1f;
 
     private readonly HashSet<IHittable> hittablesInRange = new HashSet<IHittable>();
 
@@ -24,8 +28,8 @@ public class PlayerAttackSwipe : MonoBehaviour
 
     private void Awake()
     {
-        if (audioSource == null)
-            audioSource = GetComponent<AudioSource>(); // ok if still null
+        //if (audioSource == null)
+        //    audioSource = GetComponent<AudioSource>(); // ok if still null
     }
 
     private void Reset()
@@ -81,13 +85,15 @@ public class PlayerAttackSwipe : MonoBehaviour
 
         lastAttackTime = Time.time;
 
-        float v = (AudioSettingsManager.Instance != null)
-            ? AudioSettingsManager.Instance.GetEffectiveVolume(AudioChannel.PlayerSfx) * swipeVolume
-            : swipeVolume;
+        //float v = (AudioSettingsManager.Instance != null)
+        //    ? AudioSettingsManager.Instance.GetEffectiveVolume(AudioChannel.PlayerSfx) * swipeVolume
+        //    : swipeVolume;
 
-        PlayOneShot(swipeSfx, v);
+        //PlayOneShot(swipeSfx, v);
 
         PerformAttack();
+
+        RuntimeManager.PlayOneShot(playerAttackEvent, transform.position);
     }
 
     private void PerformAttack()
@@ -111,18 +117,18 @@ public class PlayerAttackSwipe : MonoBehaviour
         if (h != null) hittablesInRange.Remove(h);
     }
 
-    private void PlayOneShot(AudioClip clip, float volume)
-    {
-        if (clip == null) return;
+    //private void PlayOneShot(AudioClip clip, float volume)
+    //{
+    //    if (clip == null) return;
 
-        if (audioSource != null)
-        {
-            audioSource.PlayOneShot(clip, volume);
-            return;
-        }
+    //    if (audioSource != null)
+    //    {
+    //        audioSource.PlayOneShot(clip, volume);
+    //        return;
+    //    }
 
-        AudioSource.PlayClipAtPoint(clip, transform.position, volume);
-    }
+    //    AudioSource.PlayClipAtPoint(clip, transform.position, volume);
+    //}
 }
 
 public interface IHittable

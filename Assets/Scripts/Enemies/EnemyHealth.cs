@@ -1,3 +1,4 @@
+using FMODUnity;
 using System.Collections;
 using UnityEngine;
 
@@ -11,12 +12,16 @@ public class EnemyHealth : MonoBehaviour, IHittable
     [SerializeField] private Animator anim;
     [SerializeField] private float hitFlashTime = 0.12f;
 
-    [Header("Audio")]
-    [SerializeField] private AudioSource audioSource;     // optional, will auto-find
-    [SerializeField] private AudioClip hitSfx;
-    [SerializeField] private AudioClip deathSfx;
-    [SerializeField, Range(0f, 1f)] private float hitVolume = 1f;
-    [SerializeField, Range(0f, 1f)] private float deathVolume = 1f;
+    //[Header("Audio")]
+    //[SerializeField] private AudioSource audioSource;     // optional, will auto-find
+    //[SerializeField] private AudioClip hitSfx;
+    //[SerializeField] private AudioClip deathSfx;
+    //[SerializeField, Range(0f, 1f)] private float hitVolume = 1f;
+    //[SerializeField, Range(0f, 1f)] private float deathVolume = 1f;
+
+    [Header("FMod Events")]
+    [SerializeField] private EventReference enemyHitEvent;
+    [SerializeField] private EventReference enemyDeathEvent;
 
     private int hitsTaken;
     private bool isDead;
@@ -31,8 +36,8 @@ public class EnemyHealth : MonoBehaviour, IHittable
         if (anim == null)
             anim = GetComponentInChildren<Animator>();
 
-        if (audioSource == null)
-            audioSource = GetComponent<AudioSource>(); // ok if still null
+        //if (audioSource == null)
+        //    audioSource = GetComponent<AudioSource>(); // ok if still null
     }
 
     public void ReceiveHit()
@@ -41,10 +46,12 @@ public class EnemyHealth : MonoBehaviour, IHittable
         hitsTaken++;
 
         // SFX: hit 
-        float master = (AudioSettingsManager.Instance != null)
-            ? AudioSettingsManager.Instance.GetEffectiveVolume(AudioChannel.EnemySfx)
-            : 1f;
-        PlayOneShot(hitSfx, master * hitVolume);
+        //float master = (AudioSettingsManager.Instance != null)
+        //    ? AudioSettingsManager.Instance.GetEffectiveVolume(AudioChannel.EnemySfx)
+        //    : 1f;
+        //PlayOneShot(hitSfx, master * hitVolume);
+
+        RuntimeManager.PlayOneShot(enemyHitEvent, transform.position);
 
         if (anim != null)
         {
@@ -78,12 +85,16 @@ public class EnemyHealth : MonoBehaviour, IHittable
             anim.SetBool(DeadHash, true);
         }
 
-        // SFX: death 
-        float master = (AudioSettingsManager.Instance != null)
-            ? AudioSettingsManager.Instance.GetEffectiveVolume(AudioChannel.EnemySfx)
-            : 1f;
+        RuntimeManager.PlayOneShot(enemyDeathEvent, transform.position);
 
-        PlayOneShot(deathSfx, master * deathVolume);
+        // SFX: death 
+        //float master = (AudioSettingsManager.Instance != null)
+        //    ? AudioSettingsManager.Instance.GetEffectiveVolume(AudioChannel.EnemySfx)
+        //    : 1f;
+
+        //PlayOneShot(deathSfx, master * deathVolume);
+
+
 
         // Disable colliders 
         foreach (var c in GetComponentsInChildren<Collider>())
@@ -95,12 +106,12 @@ public class EnemyHealth : MonoBehaviour, IHittable
     {
         if (clip == null) return;
 
-        // Use audio source
-        if (audioSource != null)
-        {
-            audioSource.PlayOneShot(clip, volume);
-            return;
-        }
+        //// Use audio source
+        //if (audioSource != null)
+        //{
+        //    audioSource.PlayOneShot(clip, volume);
+        //    return;
+        //}
 
         AudioSource.PlayClipAtPoint(clip, transform.position, volume);
     }
