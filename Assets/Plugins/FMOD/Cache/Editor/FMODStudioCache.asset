@@ -27,33 +27,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 6150
---- !u!114 &-7735530540238065047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Enemy Death Activation
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Enemy Death Activation
-  Guid:
-    Data1: 1119072980
-    Data2: 1298311832
-    Data3: -1390699376
-    Data4: 2051942746
-  Banks:
-  - {fileID: -977118949785645073}
-  IsStream: 1
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 3400
 --- !u!114 &-6508083471862390076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81,6 +54,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 905
+--- !u!114 &-5585753222428912783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Boss 3 Death Activation
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Boss 3 Death Activation
+  Guid:
+    Data1: 2008622861
+    Data2: 1129423596
+    Data3: 2087391875
+    Data4: -2095398912
+  Banks:
+  - {fileID: -977118949785645073}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 914
 --- !u!114 &-5334284561209187389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,11 +123,38 @@ MonoBehaviour:
   Path: Royal Resolve FMod/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639171925051248561
+  lastModified: 639210292162160614
   FileSizes:
   - Name: Desktop
-    Value: 1366
+    Value: 1640
   Exists: 1
+--- !u!114 &-2746104645058153641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Boss 2 Death Activation
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Boss 2 Death Activation
+  Guid:
+    Data1: -1806290779
+    Data2: 1191958752
+    Data3: -1876886910
+    Data4: -2072902356
+  Banks:
+  - {fileID: -977118949785645073}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1097
 --- !u!114 &-2604435859371022387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,10 +224,10 @@ MonoBehaviour:
   Path: Royal Resolve FMod/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639171925051212755
+  lastModified: 639210292162125328
   FileSizes:
   - Name: Desktop
-    Value: 440768
+    Value: 589888
   Exists: 1
 --- !u!114 &-317974232796172182
 MonoBehaviour:
@@ -252,17 +279,22 @@ MonoBehaviour:
   - {fileID: -8386313405480980801}
   - {fileID: 7448014406669072197}
   - {fileID: 1609392118421407509}
-  - {fileID: -7735530540238065047}
   - {fileID: -2604435859371022387}
   - {fileID: 8335680727026587664}
   - {fileID: -5334284561209187389}
+  - {fileID: -5585753222428912783}
+  - {fileID: 5486731651718726514}
+  - {fileID: 5480182120164393826}
+  - {fileID: -2746104645058153641}
+  - {fileID: 8650937499981910710}
+  - {fileID: 2960493527168902814}
   EditorParameters: []
   MasterBanks:
   - {fileID: -977118949785645073}
   StringsBanks:
   - {fileID: -3494243171413092543}
   cacheVersion: 131859
-  cacheTime: 639171925051248561
+  cacheTime: 639210292162160614
   SerializableEventsDict:
   - key: event:/Use Potion Activation
     index: 0
@@ -278,14 +310,24 @@ MonoBehaviour:
     index: 5
   - key: event:/Torch Ambience Activation
     index: 6
-  - key: event:/Enemy Death Activation
-    index: 7
   - key: event:/UI Button Activation
-    index: 8
+    index: 7
   - key: event:/Player Damage Activation
-    index: 9
+    index: 8
   - key: event:/Player Footstep Activation
+    index: 9
+  - key: event:/Boss 3 Death Activation
     index: 10
+  - key: event:/Zombie Death Activation
+    index: 11
+  - key: event:/Boss 1 Death Activation
+    index: 12
+  - key: event:/Boss 2 Death Activation
+    index: 13
+  - key: event:/Locust Death Activation
+    index: 14
+  - key: event:/Paladin Enemy Death Activation
+    index: 15
 --- !u!114 &1609392118421407509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,6 +355,87 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 20000
+--- !u!114 &2960493527168902814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Paladin Enemy Death Activation
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Paladin Enemy Death Activation
+  Guid:
+    Data1: 1119072980
+    Data2: 1298311832
+    Data3: -1390699376
+    Data4: 2051942746
+  Banks:
+  - {fileID: -977118949785645073}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2663
+--- !u!114 &5480182120164393826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Boss 1 Death Activation
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Boss 1 Death Activation
+  Guid:
+    Data1: 405509232
+    Data2: 1145629836
+    Data3: -636151907
+    Data4: 1238977625
+  Banks:
+  - {fileID: -977118949785645073}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1097
+--- !u!114 &5486731651718726514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Zombie Death Activation
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Zombie Death Activation
+  Guid:
+    Data1: -1663126977
+    Data2: 1075145663
+    Data3: 1521556634
+    Data4: -31841957
+  Banks:
+  - {fileID: -977118949785645073}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 2350
 --- !u!114 &7448014406669072197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -367,6 +490,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 400
+--- !u!114 &8650937499981910710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Locust Death Activation
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Locust Death Activation
+  Guid:
+    Data1: -305943114
+    Data2: 1195820936
+    Data3: 115916177
+    Data4: -951908252
+  Banks:
+  - {fileID: -977118949785645073}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1950
 --- !u!114 &9051512156982824533
 MonoBehaviour:
   m_ObjectHideFlags: 0

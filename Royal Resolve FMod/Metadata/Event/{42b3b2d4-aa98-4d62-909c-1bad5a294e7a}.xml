@@ -2,7 +2,7 @@
 <objects serializationModel="Studio.02.03.00">
 	<object class="Event" id="{42b3b2d4-aa98-4d62-909c-1bad5a294e7a}">
 		<property name="name">
-			<value>Enemy Death Activation</value>
+			<value>Paladin Enemy Death Activation</value>
 		</property>
 		<property name="outputFormat">
 			<value>0</value>
@@ -60,7 +60,7 @@
 	<object class="MarkerTrack" id="{46526e0f-dccb-4478-87ba-911b8a5ea421}" />
 	<object class="GroupTrack" id="{64211de1-5c6f-4cf1-bc0e-c9833613db85}">
 		<relationship name="modules">
-			<destination>{0473de14-a1a2-4bf9-b93b-bc1335962281}</destination>
+			<destination>{f302f799-48a2-449b-ac25-dcdd7effa5a7}</destination>
 		</relationship>
 		<relationship name="mixerGroup">
 			<destination>{8e807af4-4556-4f4a-993d-b53f1476f5ed}</destination>
@@ -68,7 +68,7 @@
 	</object>
 	<object class="Timeline" id="{67ee8cf5-05a6-4653-891d-9443a8fdc86d}">
 		<relationship name="modules">
-			<destination>{0473de14-a1a2-4bf9-b93b-bc1335962281}</destination>
+			<destination>{f302f799-48a2-449b-ac25-dcdd7effa5a7}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerMaster" id="{bb29f12b-0744-4e4d-907d-397eae32265b}">
@@ -88,15 +88,15 @@
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{4df5f574-b974-47fb-a73b-3e38cb0568b5}" />
-	<object class="SingleSound" id="{0473de14-a1a2-4bf9-b93b-bc1335962281}">
+	<object class="SingleSound" id="{f302f799-48a2-449b-ac25-dcdd7effa5a7}">
 		<property name="length">
-			<value>3.4000000000000004</value>
+			<value>2.6639203444564052</value>
 		</property>
 		<property name="timelockedOffset">
-			<value>0.20000000000000001</value>
+			<value>0.32407965554359525</value>
 		</property>
 		<relationship name="audioFile">
-			<destination>{951dac0f-0596-453f-bee5-83aade776ea8}</destination>
+			<destination>{a7e66c0a-7c52-4b59-97ef-b081a1f7a004}</destination>
 		</relationship>
 	</object>
 	<object class="EventMixerGroup" id="{8e807af4-4556-4f4a-993d-b53f1476f5ed}">

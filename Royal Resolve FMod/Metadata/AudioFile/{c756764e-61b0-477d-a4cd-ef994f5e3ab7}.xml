@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{c756764e-61b0-477d-a4cd-ef994f5e3ab7}">
+		<property name="assetPath">
+			<value>ImpDeath.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>11.0249996</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>1.0971428571428572</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{2e7cb511-e020-44a6-95cb-4505c4729c9a}</destination>
+		</relationship>
+	</object>
+</objects>

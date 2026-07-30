@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using FMODUnity;
@@ -6,8 +7,8 @@ using FMODUnity;
 public class PlayerAttackSwipe : MonoBehaviour
 {
     [Header("Attack Gate")]
-    [SerializeField] private UISwipeZoneGate swipeGate; 
-    [SerializeField] private float minAttackSwipeScreenDistance = 60f; 
+    [SerializeField] private UISwipeZoneGate swipeGate;
+    [SerializeField] private float minAttackSwipeScreenDistance = 60f;
 
     [Header("Attack Rules")]
     [SerializeField] private float attackCooldown = 0.25f;
@@ -26,8 +27,36 @@ public class PlayerAttackSwipe : MonoBehaviour
     private bool touchStartedInZone;
     private float lastAttackTime;
 
+    // --- Cooldown state (single source of truth for Trail + HUD) ---
+
+    /// <summary>Fires the moment an attack lands and the cooldown begins.</summary>
+    public event Action OnAttackPerformed;
+
+    /// <summary>The configured cooldown duration in seconds.</summary>
+    public float AttackCooldown => attackCooldown;
+
+    /// <summary>
+    /// Normalized cooldown progress. 0 = just attacked, 1 = fully ready.
+    /// Drives the HUD fill bar and stays frame-accurate.
+    /// </summary>
+    public float CooldownProgress01
+    {
+        get
+        {
+            if (attackCooldown <= 0f) return 1f;
+            float elapsed = Time.time - lastAttackTime;
+            return Mathf.Clamp01(elapsed / attackCooldown);
+        }
+    }
+
+    /// <summary>True when the attack is off cooldown and ready to swing.</summary>
+    public bool IsReady => Time.time >= lastAttackTime + attackCooldown;
+
     private void Awake()
     {
+        // Start "ready" so the player isn't locked out on the first frame.
+        lastAttackTime = -attackCooldown;
+
         //if (audioSource == null)
         //    audioSource = GetComponent<AudioSource>(); // ok if still null
     }
@@ -79,20 +108,19 @@ public class PlayerAttackSwipe : MonoBehaviour
         Vector2 touchEnd = InputManager.Instance.GetTouchScreenPosition();
         float swipeDist = Vector2.Distance(touchStart, touchEnd);
 
-        // Require a minimum swipe distance so taps don’t count as attacks
+        // Require a minimum swipe distance so taps don't count as attacks
         if (swipeDist < minAttackSwipeScreenDistance)
             return;
 
         lastAttackTime = Time.time;
+        OnAttackPerformed?.Invoke();
 
         //float v = (AudioSettingsManager.Instance != null)
         //    ? AudioSettingsManager.Instance.GetEffectiveVolume(AudioChannel.PlayerSfx) * swipeVolume
         //    : swipeVolume;
-
         //PlayOneShot(swipeSfx, v);
 
         PerformAttack();
-
         RuntimeManager.PlayOneShot(playerAttackEvent, transform.position);
     }
 
@@ -120,13 +148,11 @@ public class PlayerAttackSwipe : MonoBehaviour
     //private void PlayOneShot(AudioClip clip, float volume)
     //{
     //    if (clip == null) return;
-
     //    if (audioSource != null)
     //    {
     //        audioSource.PlayOneShot(clip, volume);
     //        return;
     //    }
-
     //    AudioSource.PlayClipAtPoint(clip, transform.position, volume);
     //}
 }
