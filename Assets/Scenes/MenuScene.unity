@@ -2210,6 +2210,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuController
   gameSceneName: GameScene
+  buttonClickEvent:
+    Guid:
+      Data1: -1459305915
+      Data2: 1274815609
+      Data3: -2035310702
+      Data4: 634803227
+    Path: event:/UI Button Activation
 --- !u!114 &2129586052
 MonoBehaviour:
   m_ObjectHideFlags: 0

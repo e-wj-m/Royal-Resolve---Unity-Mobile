@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 using UnityEngine.SceneManagement;
+using FMODUnity;
 
 [RequireComponent(typeof(UIDocument))]
 public class MenuController : MonoBehaviour
@@ -13,6 +14,9 @@ public class MenuController : MonoBehaviour
     private BaseMenu currentState;
 
     [SerializeField] private string gameSceneName = "GameScene";
+
+    [Header("FMOD Events")]
+    [SerializeField] private EventReference buttonClickEvent;
 
     private void Awake()
     {
@@ -27,8 +31,8 @@ public class MenuController : MonoBehaviour
         foreach (MenuStates menuState in Enum.GetValues(typeof(MenuStates)))
         {
             string path = "Menu/" + menuState;
-
             VisualTreeAsset newMenu = Resources.Load<VisualTreeAsset>(path);
+
             if (newMenu == null)
             {
                 Debug.LogError($"Could not find UXML doc at Resources/{path}.uxml");
@@ -42,7 +46,6 @@ public class MenuController : MonoBehaviour
 
             // Instantiate the concrete menu
             BaseMenu menuInstance = CreateMenuInstance(menuState, menuElement);
-
             if (menuInstance != null)
             {
                 menuDictonary.Add(menuState, menuInstance);
@@ -99,6 +102,12 @@ public class MenuController : MonoBehaviour
             currentState.Show();
     }
 
+    public void PlayButtonClick()
+    {
+        if (!buttonClickEvent.IsNull)
+            RuntimeManager.PlayOneShot(buttonClickEvent);
+    }
+
     public void StartGame()
     {
         SceneManager.LoadScene(gameSceneName);
@@ -107,7 +116,6 @@ public class MenuController : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
-
 #if UNITY_EDITOR
         // Makes Quit work in editor play mode too
         UnityEditor.EditorApplication.isPlaying = false;

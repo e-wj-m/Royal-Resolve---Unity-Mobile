@@ -1,5 +1,8 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+using FMODUnity;
+
+
 
 public enum MenuStates
 {
@@ -10,6 +13,8 @@ public enum MenuStates
 
 public abstract class BaseMenu
 {
+    
+
     protected VisualElement menuRoot;
     protected MenuController context;
 
@@ -42,6 +47,11 @@ public abstract class BaseMenu
 
 public class MainMenu : BaseMenu
 {
+
+    [Header("FMod Events")]
+    [SerializeField] private EventReference buttonClickEvent;
+
+
     public MainMenu(MenuController context, VisualElement menuRoot) : base(context, menuRoot) { }
 
     protected override void BindButtons()
@@ -53,6 +63,7 @@ public class MainMenu : BaseMenu
 
         if (startButton != null)
             startButton.clicked += context.StartGame;
+            RuntimeManager.PlayOneShot(buttonClickEvent);
 
         if (settingsButton != null)
             settingsButton.clicked += () => context.PushMenu(MenuStates.SettingsMenu);

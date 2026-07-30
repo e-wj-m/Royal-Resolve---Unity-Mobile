@@ -30,9 +30,9 @@ public class PlayerHealth : MonoBehaviour
 
     [Header("Player Death Conditions")]
     [Tooltip("Player Will 'Die' On The Following Conditions:")]
+
     public string deathTriggerName = "Die";
     public float restartDelay = 2f;
-
     private bool isDead = false;
     private float targetFill;
     private float currentFill;
@@ -42,6 +42,7 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         targetFill = 1f;
         currentFill = 1f;
+
         UpdateHealthBar(true);
 
         if (deathOverlay != null)
@@ -57,8 +58,8 @@ public class PlayerHealth : MonoBehaviour
     private void Update()
     {
         if (healthFillImage == null) return;
-        if (Mathf.Approximately(currentFill, targetFill)) return;
 
+        if (Mathf.Approximately(currentFill, targetFill)) return;
         currentFill = Mathf.MoveTowards(currentFill, targetFill, drainSpeed * Time.deltaTime);
         healthFillImage.fillAmount = currentFill;
         healthFillImage.color = healthGradient.Evaluate(currentFill);
@@ -70,7 +71,6 @@ public class PlayerHealth : MonoBehaviour
 
         currentHealth = Mathf.Clamp(currentHealth - amount, 0f, maxHealth);
         targetFill = currentHealth / maxHealth;
-
         RuntimeManager.PlayOneShot(playerDamageEvent, transform.position);
 
         if (currentHealth <= 0f)
@@ -107,8 +107,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (isDead) return;
         isDead = true;
-
         // Disable player input
+
         if (InputManager.Instance != null)
             InputManager.Instance.enabled = false;
 
@@ -137,7 +137,6 @@ public class PlayerHealth : MonoBehaviour
     private void QuitGame()
     {
         Time.timeScale = 1f;
-
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
