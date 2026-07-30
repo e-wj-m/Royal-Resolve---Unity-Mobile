@@ -57,9 +57,7 @@ public class Trail : MonoBehaviour
         if (swipeGate != null && !swipeGate.IsAllowed(screenPos))
             return;
 
-        // Don't draw the trail while the attack is still on cooldown.
-        // Blocking at the start of the swipe keeps the visual honest:
-        // if you can't attack, no trail appears.
+        // Don't draw the trail while the attack is still on cooldown. If the Player can't attack, no trail shows.
         if (attackSwipe != null && !attackSwipe.IsReady)
             return;
 

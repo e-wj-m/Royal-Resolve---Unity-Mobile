@@ -27,18 +27,15 @@ public class PlayerAttackSwipe : MonoBehaviour
     private bool touchStartedInZone;
     private float lastAttackTime;
 
-    // --- Cooldown state (single source of truth for Trail + HUD) ---
+    // Cooldown state (single source of truth for Trail + HUD)
 
-    /// <summary>Fires the moment an attack lands and the cooldown begins.</summary>
+    // Fires the moment an attack lands and the cooldown begins.
     public event Action OnAttackPerformed;
 
-    /// <summary>The configured cooldown duration in seconds.</summary>
+    // The configured cooldown duration in seconds.
     public float AttackCooldown => attackCooldown;
 
-    /// <summary>
-    /// Normalized cooldown progress. 0 = just attacked, 1 = fully ready.
-    /// Drives the HUD fill bar and stays frame-accurate.
-    /// </summary>
+    // Normalized cooldown progress. 0 = just attacked, 1 = fully ready. Drives the HUD fill bar and stays frame-accurate.
     public float CooldownProgress01
     {
         get
@@ -49,7 +46,7 @@ public class PlayerAttackSwipe : MonoBehaviour
         }
     }
 
-    /// <summary>True when the attack is off cooldown and ready to swing.</summary>
+    // True when the attack is off cooldown and ready to swing.
     public bool IsReady => Time.time >= lastAttackTime + attackCooldown;
 
     private void Awake()
